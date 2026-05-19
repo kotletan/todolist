@@ -13,10 +13,10 @@ Task createTask()
     strcpy(std.name,n1);
     cout<<"Enter priority: ";
     cin>>std.numb;
-    cout<<"Enter description: ";
+    cin.ignore();
     const int N2=20;
     char n2[N2];
-    cout<<"Enter name: ";
+    cout<<"Enter description: ";
     cin.getline(n2,N2);
     std.description=new char[strlen(n2)+1];
     strcpy(std.description,n2);
@@ -26,9 +26,16 @@ Task createTask()
     cin>>std.year;
     return std;
 };
-void addTask(int )
+void showTask(const Task& std )
 {
-    
+    cout<<std.name<<'\t'<<std.numb<<'\t'<<std.description<<'\t'<<std.day<<'\t'<<std.month<<'\t'<<std.year<<endl;
+}
+void showAll(const Task* task,uint size)
+{
+    for(uint i=0;i<size;i++)
+    {
+        showTask(task[i]);
+    }
 }
 void deleteTask(int )
 {
@@ -42,7 +49,7 @@ void searchTask(int )
 {
     
 }
-void showTask(int )
+void addTask(int )
 {
     
 }
