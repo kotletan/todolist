@@ -26,6 +26,10 @@ Task createTask()
     cin>>std.year;
     return std;
 };
+void showWelcomeMenu()
+{
+    
+}
 void showTask(const Task& std )
 {
     cout<<std.name<<'\t'<<std.numb<<'\t'<<std.description<<'\t'<<std.day<<'\t'<<std.month<<'\t'<<std.year<<endl;
@@ -37,31 +41,67 @@ void showAll(const Task* task,uint size)
         showTask(task[i]);
     }
 }
-void deleteTask(int )
+void addTask(Task*& tasks, uint& size)
 {
     
+}
+void resizeArray (Task*& tasks, uint& size)
+{
+    
+}
+void deleteTask(Task*& tasks, uint& size )
+{
+    
+}
+void freeTaskMemory(Task& task) {
+    delete[] task.name;
+    delete[] task.description;
 }
 void changeTask(int )
 {
     
 }
-void searchTask(int )
+void searchTaskByName(const Task* tasks, uint size )
 {
     
 }
-void addTask(int )
+void searchTaskByPriority(const Task* tasks, uint size )
 {
     
 }
-void sortingTask(int )
+void searchTaskByDescription(const Task* tasks, uint size )
 {
     
 }
-void clearTask(int )
+void searchTaskByDateAndTime(const Task* tasks, uint size)
 {
     
 }
-void callFunction(int )
+void showTaskForDay(const Task& std )
+{
+    
+}
+void showTaskForWeek(const Task& std )
+{
+    
+}
+void showTaskForMonth(const Task& std )
+{
+    
+}
+void sortingTaskByPriority(int )
+{
+    
+}
+void sortingTaskByDateAndTime(int )
+{
+    
+}
+void clearTask(Task*& tasks, uint& size )
+{
+    
+}
+void callFunction(Task*& tasks, uint& size)
 {
     
 }
