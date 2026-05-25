@@ -24,5 +24,7 @@ int main() {
     cin>>p;
     deleteTask(task,size,p);
     showAll(task,size);
+    changeTask(task,size);
+    showAll(task,size);
     return 0;
 }

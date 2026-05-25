@@ -4,7 +4,6 @@ typedef unsigned short ushort;
 struct Task
 {
     char* name;
-    ushort priority;
     char* description;
     ushort day;
     ushort month;

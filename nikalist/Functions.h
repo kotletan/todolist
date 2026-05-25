@@ -53,10 +53,6 @@ void addTask(Task*& tasks, uint& size, const Task& newTask)
        tasks = temp;
        size++;
 }
-void resizeArray (Task*& tasks, uint& size)
-{
-    
-}
 void deleteTask(Task*& tasks, uint& size,  uint searchPriority)
 {
     bool isFound=false;
@@ -102,9 +98,82 @@ void freeTaskMemory(Task& task) {
     delete[] task.name;
     delete[] task.description;
 }
-void changeTask(int )
+void changeTask(Task* tasks, uint size)
 {
-    
+    uint numberTask;
+    cout<<"What task u want to change?";
+    cin>>numberTask;
+    int index=-1;
+    for(uint i=0;i<size;i++)
+    {
+        if(tasks[i].numb==numberTask)
+        {
+            index=i;
+            break;
+        }
+    }
+    if(index==-1)
+    {
+        cout<<"Task not found!"<<endl;
+        return;
+    }
+    uint change=-1;
+    while(change!=0)
+    {
+        cout<<"Choose what u want to change: 1-name, 2-priority, 3-description, 4-Date, 5-time, 0-exit : ";
+        cin>>change;
+        if(change==0)
+        {
+            cout<<"Exit......"<<endl;
+            break;
+        }
+        if (change==1) {
+            cin.ignore();
+            const int N1=20;
+            char n1[N1];
+            cout<<"Enter name: ";
+            cin.getline(n1,N1);
+            delete[] tasks[index].name;
+            tasks[index].name=new char[strlen(n1)+1];
+            strcpy(tasks[index].name,n1);
+            cout<<"Name changed!"<<endl;
+        }
+        else if(change ==2)
+        {
+            cout<<"Enter priority: ";
+            cin>>tasks[index].numb;
+        }
+        else if(change ==3)
+        {
+            cin.ignore();
+            const int N2=20;
+            char n2[N2];
+            cout<<"Enter description: ";
+            cin.getline(n2,N2);
+            delete[] tasks[index].description;
+            tasks[index].description=new char[strlen(n2)+1];
+            strcpy(tasks[index].description,n2);
+            cout<<"New description!"<<endl;
+        }
+        else if(change ==4)
+        {
+            cout<<"Enter Date(day, month, year): ";
+            cin>>tasks[index].day;
+            cin>>tasks[index].month;
+            cin>>tasks[index].year;
+            cout<<"New date!"<<endl;
+        }
+        else if(change ==5)
+        {
+            cout<<"Enter posted time: ";
+            cin>>tasks[index].time;
+            cout<<"New time posted!"<<endl;
+        }
+        else
+        {
+            cout<<"Invalid number, try again!"<<endl;
+        }
+    }
 }
 void searchTaskByName(const Task* tasks, uint size )
 {
