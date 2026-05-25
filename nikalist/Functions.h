@@ -3,8 +3,6 @@ Task createTask()
 {
     cin.ignore();
     Task std{};
-//    static uint numb=1;
-//    std.numb=numb++;
     const int N1=20;
     char n1[N1];
     cout<<"Enter name: ";
@@ -24,6 +22,8 @@ Task createTask()
     cin>>std.day;
     cin>>std.month;
     cin>>std.year;
+    cout<<"Enter posted time: ";
+    cin>>std.time;
     return std;
 };
 void showWelcomeMenu()
@@ -41,17 +41,62 @@ void showAll(const Task* task,uint size)
         showTask(task[i]);
     }
 }
-void addTask(Task*& tasks, uint& size)
+void addTask(Task*& tasks, uint& size, const Task& newTask)
 {
-    
+    Task* temp = new Task[size + 1];
+       for (uint i = 0; i < size; i++)
+       {
+           temp[i] = tasks[i];
+       }
+       temp[size] = newTask;
+       delete[] tasks;
+       tasks = temp;
+       size++;
 }
 void resizeArray (Task*& tasks, uint& size)
 {
     
 }
-void deleteTask(Task*& tasks, uint& size )
+void deleteTask(Task*& tasks, uint& size,  uint searchPriority)
 {
-    
+    bool isFound=false;
+        uint PriorityDelete=-1;
+        for(uint i=0;i<size;i++)
+        {
+            if(tasks[i].numb==searchPriority)
+            {
+                PriorityDelete = i;
+                isFound = true;
+                break;
+            }
+        }
+        if(!isFound)
+        {
+            cout<<"Student with ID: "<<searchPriority<<" not found!"<<endl;
+        }
+  if(size==1)
+  {
+      delete[] tasks[0].name;
+      delete[] tasks;
+      tasks=nullptr;
+      size=0;
+      return;
+      }
+      Task* temp=new Task[size - 1];
+  for(uint i=0, j = 0;i<size;i++)
+  {
+      if (i != PriorityDelete)
+      {
+          temp[j++] = tasks[i];
+      }
+      else
+      {
+          delete[] tasks[i].name;
+      }
+      }
+  delete[] tasks;
+  tasks=temp;
+  size--;
 }
 void freeTaskMemory(Task& task) {
     delete[] task.name;
@@ -99,7 +144,11 @@ void sortingTaskByDateAndTime(int )
 }
 void clearTask(Task*& tasks, uint& size )
 {
-    
+    for(uint i=0;i<size;i++)
+    {
+        freeTaskMemory(tasks[i]);
+    }
+    delete[] tasks;
 }
 void callFunction(Task*& tasks, uint& size)
 {

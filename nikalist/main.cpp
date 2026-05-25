@@ -17,5 +17,12 @@ int main() {
            showTask(task[i]);
        }
     showAll(task,size);
+    Task newTask = createTask();
+    addTask(task,size,newTask);
+    int p;
+    cout<<"Enter priority of the task, that you want to delete: ";
+    cin>>p;
+    deleteTask(task,size,p);
+    showAll(task,size);
     return 0;
 }
