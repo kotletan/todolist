@@ -32,7 +32,7 @@ void showWelcomeMenu()
 }
 void showTask(const Task& std )
 {
-    cout<<std.name<<'\t'<<std.numb<<'\t'<<std.description<<'\t'<<std.day<<'\t'<<std.month<<'\t'<<std.year<<endl;
+    cout<<std.name<<'\t'<<std.numb<<'\t'<<std.description<<'\t'<<std.day<<'\t'<<std.month<<'\t'<<std.year<<std.time<<'\t'<<endl;
 }
 void showAll(const Task* task,uint size)
 {
@@ -68,7 +68,7 @@ void deleteTask(Task*& tasks, uint& size,  uint searchPriority)
         }
         if(!isFound)
         {
-            cout<<"Student with ID: "<<searchPriority<<" not found!"<<endl;
+            cout<<"Task with priority: "<<searchPriority<<" not found!"<<endl;
         }
   if(size==1)
   {
@@ -101,7 +101,7 @@ void freeTaskMemory(Task& task) {
 void changeTask(Task* tasks, uint size)
 {
     uint numberTask;
-    cout<<"What task u want to change?";
+    cout<<"What task u want to change? ";
     cin>>numberTask;
     int index=-1;
     for(uint i=0;i<size;i++)
@@ -142,6 +142,7 @@ void changeTask(Task* tasks, uint size)
         {
             cout<<"Enter priority: ";
             cin>>tasks[index].numb;
+            cout<<"Priority changed!"<<endl;
         }
         else if(change ==3)
         {
